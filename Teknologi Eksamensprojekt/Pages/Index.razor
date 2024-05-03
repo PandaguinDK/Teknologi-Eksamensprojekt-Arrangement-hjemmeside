@@ -1,0 +1,116 @@
+﻿@page "/"
+@using System.Globalization
+@using Data
+
+<PageTitle>Ungeaktiviteter Kalender</PageTitle>
+
+<table>
+          <tr>
+              <td>Tid</td>
+            <td>Mandag</td>
+            <td>Tirsdag</td>
+            <td>Onsdag</td>
+            <td>Torsdag</td>
+            <td>Fredag</td>
+            <td>Lørdag</td>
+            <td>Søndag</td>
+          </tr>
+    @{
+        for (int i = 1; i <= 24; i++)
+        {
+          <tr>
+            <td>@TimeSlot(i)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        }
+    }
+</table>
+
+@code{
+
+    string TimeSlot(int i)
+    {
+        switch (i)
+        {
+            case 1:
+                return "6:00-7:00";
+                break;
+            case 2:
+                return "7:00-8:00";
+                break;
+            case 3:
+                return "8:00-9:00";
+                break;
+            case 4:
+                return "9:00-10:00";
+                break;
+            case 5:
+                return "10:00-11:00";
+                break;
+            case 6:
+                return "11:00-12:00";
+                break;
+            case 7:
+                return "12:00-13:00";
+                break;
+            case 8:
+                return "13:00-14:00";
+                break;
+            case 9:
+                return "14:00-15:00";
+                break;
+            case 10:
+                return "15:00-16:00";
+                break;
+            case 11:
+                return "16:00-17:00";
+                break;
+            case 12:
+                return "17:00-18:00";
+                break;
+            case 13:
+                return "18:00-19:00";
+                break;
+            case 14:
+                return "19:00-20:00";
+                break;
+            case 15:
+                return "20:00-21:00";
+                break;
+            case 16:
+                return "21:00-22:00";
+                break;
+            case 17:
+                return "22:00-23:00";
+                break;
+            case 18:
+                return "23:00-00:00";
+                break;
+            case 19:
+                return "00:00-1:00";
+                break;
+            case 20:
+                return "1:00-2:00";
+                break;
+            case 21:
+                return "2:00-3:00";
+                break;
+            case 22:
+                return "3:00-4:00";
+                break;
+            case 23:
+                return "4:00-5:00";
+                break;
+            case 24:
+                return "5:00-6:00";
+                break;
+        }
+        return "Kan ikke finde tidspunktet";
+    }
+}

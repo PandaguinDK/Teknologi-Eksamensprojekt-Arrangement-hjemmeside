@@ -1,0 +1,86 @@
+﻿@inherits LayoutComponentBase
+@using System.Globalization
+@using Data
+
+<PageTitle>Teknologi Eksamensprojekt</PageTitle>
+
+<div class="page">
+    <main>
+        <div class="top-row px-4">
+            @{
+                weekNumber = GetWeekNumber();
+            }
+            Uge @weekNumber | @GetMonthName() - @DateTime.Now.Year <a href="Arrangementer" target="_blank">Opret nyt arrangement</a> <button @onclick="decreaseWeekNumber">Forrige side</button> <button @onclick="increaseWeekNumber">Næste side</button> <button href="Login">Login</button>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+
+@code{
+    int weekNumber { get; set; }
+
+    int GetWeekNumber()
+    {
+        CultureInfo ciCurr = CultureInfo.CurrentCulture;
+        int weekNum = ciCurr.Calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+        return weekNum;
+    }
+
+    void increaseWeekNumber()
+    {
+        weekNumber = weekNumber + 1;
+    }
+
+    void decreaseWeekNumber()
+    {
+        weekNumber = weekNumber - 1;
+    }
+
+    string GetMonthName()
+    {
+        switch (DateTime.Now.Date.Month)
+        {
+            case 1:
+                return "Januar";
+                break;
+            case 2:
+                return "Februar";
+                break;
+            case 3:
+                return "Marts";
+                break;
+            case 4:
+                return "April";
+                break;
+            case 5:
+                return "Maj";
+                break;
+            case 6:
+                return "Juni";
+                break;
+            case 7:
+                return "Juli";
+                break;
+            case 8:
+                return "August";
+                break;
+            case 9:
+                return "September";
+                break;
+            case 10:
+                return "Oktober";
+                break;
+            case 11:
+                return "November";
+                break;
+            case 12:
+                return "December";
+                break;
+        }
+        return "Kan ikke finde månedens navn";
+    }
+}

@@ -1,0 +1,39 @@
+﻿@page "/Arrangementer"
+@using System.Globalization
+
+<PageTitle>Opret nyt arrangement</PageTitle>
+
+<h3>Udfyld felterne nedenunder</h3>
+
+<form>
+    <div class="form-group">
+        <label for="arrangementName">Navn</label>
+        <input type="text" class="form-control" @bind="arrangementName" />
+    </div>
+    <div class="form-group">
+        <label for="arrangementDato">Dato</label>
+        <input type="date"  class="form-control" @bind="arrangementDate" />
+    </div>
+        <div class="form-group">
+        <label for="arrangementDato">Beskrivelse</label>
+        <input type="text"  class="form-control" @bind="arrangementDescription" />
+    </div>
+    <button type="button" @onclick="OpretArrangement">Opret et nyt arrangement</button>
+</form>
+
+
+@code{
+
+
+    string arrangementName { get; set; }
+    DateTime arrangementDate { get; set; }
+    string arrangementDescription { get; set; }
+
+    bool errorMessage { get; set; }
+
+    void OpretArrangement()
+    {
+        if (arrangementName == null || arrangementDate == null) errorMessage = true;
+        Data.Arrangement arrangement = new  Data.Arrangement(arrangementName, arrangementDate, arrangementDescription);
+    }
+}
